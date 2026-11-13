@@ -8,8 +8,9 @@ export type Course = {
 };
 export const courses: Course[] = [
   {
+    // Keep this legacy slug so existing bookmarks, search links and purchases continue to resolve.
     slug: "youtube-automation-blueprint",
-    title: "YouTube Automation Blueprint",
+    title: "YouTube Content Workflow Blueprint",
     eyebrow: "Start here",
     description: "Build a repeatable, original-content YouTube workflow from idea to upload.",
     longDescription: "A beginner-friendly, practical course covering channel strategy, audience research, scripting, production workflows, publishing, analytics and responsible monetization. You will learn to build a sustainable channel using original or properly licensed content—not copied videos or misleading growth tactics.",

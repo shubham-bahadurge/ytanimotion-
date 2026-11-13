@@ -1,3 +1,36 @@
 import Link from "next/link";
 import { courses } from "@/data/courses";
-export default function CoursesPage(){return <main className="container" style={{padding:"64px 0"}}><p style={{color:"#3974c8",fontWeight:800,fontSize:12,letterSpacing:2}}>THE COURSE LIBRARY</p><h1 style={{fontSize:44,letterSpacing:-1.5,margin:"10px 0"}}>Choose what you want to master.</h1><p className="muted" style={{maxWidth:620,lineHeight:1.7,marginBottom:34}}>Practical courses to help you plan, create and improve original YouTube content.</p><div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(270px,1fr))",gap:20}}>{courses.map(c=><article className="card" key={c.slug} style={{padding:24}}><div style={{height:150,borderRadius:16,background:"linear-gradient(135deg,#102b55,#3974c8)",display:"grid",placeItems:"center",fontSize:48,color:"#fff"}}>{c.icon}</div><p style={{color:"#3974c8",fontWeight:800,fontSize:11,letterSpacing:1.3,marginTop:20}}>{c.badge.toUpperCase()} · {c.level.toUpperCase()}</p><h2 style={{fontSize:21,margin:"8px 0"}}>{c.title}</h2><p className="muted" style={{lineHeight:1.65,fontSize:14,minHeight:70}}>{c.description}</p><div style={{display:"flex",gap:16,fontSize:13,color:"#66758c",margin:"18px 0"}}><span>◷ {c.duration}</span><span>▤ {c.modules.reduce((n,m)=>n+m.lessons.length,0)} lessons</span></div><div style={{display:"flex",justifyContent:"space-between",alignItems:"center",borderTop:"1px solid #edf0f5",paddingTop:18}}><strong style={{fontSize:20}}>₹{c.price.toLocaleString("en-IN")}</strong><Link className="btn" href={"/course/"+c.slug}>View details →</Link></div></article>)}</div></main>}
+
+export default function CoursesPage() {
+  return (
+    <main className="container" style={{ padding: "64px 0" }}>
+      <p className="eyebrow">THE COURSE LIBRARY</p>
+      <h1 style={{ fontSize: "clamp(34px,5vw,44px)", letterSpacing: -1.5, margin: "10px 0" }}>Choose what you want to master.</h1>
+      <p className="muted" style={{ maxWidth: 620, lineHeight: 1.7, marginBottom: 34 }}>
+        Practical courses to help you plan, create and improve original YouTube content.
+      </p>
+      <div className="course-grid">
+        {courses.map((course) => (
+          <article className="card course-card" key={course.slug}>
+            <div className="course-art" role="img" aria-label={`${course.title} course artwork placeholder`}>
+              {course.icon}
+            </div>
+            <p className="course-eyebrow">{course.badge.toUpperCase()} · {course.level.toUpperCase()}</p>
+            <h2>{course.title}</h2>
+            <p className="muted course-description">{course.description}</p>
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap", fontSize: 13, color: "#66758c", margin: "18px 0" }}>
+              <span aria-label={`Duration: ${course.duration}`}>◷ {course.duration}</span>
+              <span>{course.modules.reduce((count, module) => count + module.lessons.length, 0)} lessons</span>
+            </div>
+            <div className="course-card-bottom" style={{ borderTop: "1px solid #edf0f5", paddingTop: 18 }}>
+              <strong style={{ fontSize: 20 }}>₹{course.price.toLocaleString("en-IN")}</strong>
+              <Link className="btn" href={`/course/${course.slug}`} aria-label={`View details for ${course.title}`}>
+                View details →
+              </Link>
+            </div>
+          </article>
+        ))}
+      </div>
+    </main>
+  );
+}
