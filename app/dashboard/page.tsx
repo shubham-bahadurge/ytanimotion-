@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
-import type { Metadata } from "next";
-
 export const metadata: Metadata = { title: "My Learning Dashboard", description: `Access your ${siteConfig.businessName} courses and learning progress.`, robots: { index: false, follow: false } };
 
 import Link from "next/link";
