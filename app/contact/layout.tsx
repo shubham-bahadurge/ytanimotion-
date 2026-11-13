@@ -3,7 +3,7 @@ import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: `Contact ${siteConfig.businessName}`,
-  description: "Contact SHUBHIII for course, account and learning-platform support.",
+  description: `Contact ${siteConfig.businessName} for course, account and learning-platform support.`,
   alternates: { canonical: "/contact" }
 };
 
