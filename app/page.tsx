@@ -1,35 +1,136 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, ChartNoAxesCombined, Clapperboard, Lightbulb, ShieldCheck, Star, Video } from "lucide-react";
+import { ArrowRight, ChartNoAxesCombined, Clapperboard, Lightbulb, ShieldCheck, Star, Video } from "lucide-react";
 import { courses } from "@/data/courses";
-export default function Home(){
- return <main>
-  <section style={{background:"radial-gradient(circle at 85% 20%,#315d9a 0,transparent 34%),linear-gradient(120deg,#0d2345,#173d72)",color:"#fff",padding:"92px 0 100px",overflow:"hidden"}}>
-   <div className="container" style={{display:"grid",gridTemplateColumns:"1.15fr .85fr",gap:55,alignItems:"center"}}>
-    <div><div style={{display:"inline-flex",gap:8,alignItems:"center",border:"1px solid #ffffff45",borderRadius:99,padding:"8px 13px",fontSize:12,color:"#dce8fb"}}><Star size={14}/> CREATOR LEARNING STUDIO</div>
-     <h1 style={{fontSize:"clamp(42px,6vw,68px)",lineHeight:1.04,letterSpacing:"-2.8px",margin:"24px 0 20px",fontWeight:850}}>Build your channel.<br/><span style={{color:"#9fc5ff"}}>Own your growth.</span></h1>
-     <p style={{fontSize:18,lineHeight:1.75,color:"#d2deef",maxWidth:570}}>Learn YouTube strategy, original content workflows and creator skills with clear, practical lessons made for beginners.</p>
-     <div style={{display:"flex",gap:12,flexWrap:"wrap",marginTop:30}}><Link className="btn" style={{background:"#fff",color:"#143767"}} href="/courses">Explore courses <ArrowRight size={17}/></Link><Link className="btn" style={{background:"#ffffff1c",border:"1px solid #ffffff55"}} href="/#why">Why SHUBHIII?</Link></div>
-     <p style={{fontSize:12,color:"#b9cbe4",marginTop:22}}>Practical learning. Original ideas. Sustainable creator habits.</p>
-    </div>
-    <div style={{position:"relative"}}><div style={{background:"linear-gradient(145deg,#eaf2ff,#b7d0f2)",borderRadius:30,padding:24,transform:"rotate(2deg)",boxShadow:"0 30px 80px #0004"}}>
-      <div style={{background:"#102b55",borderRadius:20,padding:24,color:"#fff",minHeight:285}}>
-       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}><span style={{fontSize:12,color:"#a9c7f3",letterSpacing:2}}>THE CREATOR PLAYBOOK</span><Video/></div>
-       <div style={{fontSize:58,marginTop:28}}>▶</div><h2 style={{fontSize:27,lineHeight:1.15,margin:"15px 0"}}>From first idea<br/>to your next upload.</h2>
-       <div style={{height:7,background:"#ffffff2b",borderRadius:9,marginTop:26}}><div style={{height:7,width:"68%",background:"#83b7ff",borderRadius:9}}/></div>
-       <div style={{display:"flex",justifyContent:"space-between",fontSize:11,color:"#c8d9f0",marginTop:10}}><span>LEARN AT YOUR PACE</span><span>01 / 06</span></div>
-      </div></div></div>
-   </div>
-  </section>
-  <section id="why" className="container" style={{padding:"82px 0"}}>
-   <div style={{textAlign:"center",maxWidth:650,margin:"0 auto 42px"}}><p style={{color:"#3974c8",fontWeight:800,fontSize:12,letterSpacing:2}}>WHY LEARN WITH US</p><h2 style={{fontSize:38,letterSpacing:-1.4,margin:"12px 0"}}>A clearer path to creating</h2><p className="muted" style={{lineHeight:1.7}}>No shortcuts or overnight-success promises. Just the skills, structure and confidence to make better work.</p></div>
-   <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",gap:18}}>
-    {[{i:<Lightbulb/>,t:"Beginner friendly",d:"Clear explanations and practical steps, even if you are starting from zero."},{i:<Clapperboard/>,t:"Real creator workflows",d:"Learn research, scripting, production and publishing as a connected process."},{i:<ChartNoAxesCombined/>,t:"Learn from data",d:"Understand analytics and use evidence to improve your next video."},{i:<ShieldCheck/>,t:"Create responsibly",d:"Focus on original work, licensed assets and sustainable channel practices."}].map((x)=><article className="card" key={x.t} style={{padding:24}}><div style={{width:44,height:44,borderRadius:14,background:"#edf4ff",color:"#2457a7",display:"grid",placeItems:"center"}}>{x.i}</div><h3 style={{fontSize:18,margin:"18px 0 8px"}}>{x.t}</h3><p className="muted" style={{lineHeight:1.65,fontSize:14,margin:0}}>{x.d}</p></article>)}
-   </div>
-  </section>
-  <section style={{background:"#f5f8fd",padding:"76px 0"}}><div className="container"><div style={{display:"flex",justifyContent:"space-between",alignItems:"end",gap:20,flexWrap:"wrap",marginBottom:30}}><div><p style={{color:"#3974c8",fontWeight:800,fontSize:12,letterSpacing:2}}>START LEARNING</p><h2 style={{fontSize:36,margin:"8px 0"}}>Featured courses</h2></div><Link href="/courses" style={{color:"#2457a7",fontWeight:700}}>View all courses →</Link></div>
-   <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:18}}>{courses.slice(0,3).map(c=><article className="card" key={c.slug} style={{padding:24}}><div style={{height:130,borderRadius:14,background:"linear-gradient(135deg,#102b55,#3974c8)",display:"grid",placeItems:"center",color:"#fff",fontSize:44}}>{c.icon}</div><p style={{color:"#3974c8",fontSize:11,fontWeight:800,letterSpacing:1.4,marginTop:20}}>{c.badge.toUpperCase()} · {c.level.toUpperCase()}</p><h3 style={{fontSize:20,margin:"8px 0"}}>{c.title}</h3><p className="muted" style={{fontSize:14,lineHeight:1.6,minHeight:66}}>{c.description}</p><div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:18}}><strong>₹{c.price.toLocaleString("en-IN")}</strong><Link className="btn btn-light" href={"/course/"+c.slug}>View details</Link></div></article>)}</div>
-  </div></section>
-  <section className="container" style={{padding:"76px 0",display:"grid",gridTemplateColumns:"1fr 1.5fr",gap:50,alignItems:"center"}}><div style={{background:"#eaf1fb",borderRadius:24,padding:36,textAlign:"center"}}><div style={{width:100,height:100,borderRadius:"50%",background:"#173d72",color:"#fff",display:"grid",placeItems:"center",fontSize:36,fontWeight:800,margin:"auto"}}>S</div><h3 style={{marginBottom:4}}>Your instructor</h3><p className="muted" style={{fontSize:13}}>Creator educator · SHUBHIII</p></div><div><p style={{color:"#3974c8",fontWeight:800,fontSize:12,letterSpacing:2}}>ABOUT THE STUDIO</p><h2 style={{fontSize:34,margin:"10px 0 14px"}}>Learn by understanding the process.</h2><p className="muted" style={{lineHeight:1.8}}>SHUBHIII is built around a simple idea: creative skills become easier when the process is broken into clear, manageable steps. Our lessons focus on the fundamentals of channel strategy and original video creation. Add your real instructor name, experience and photograph here before launch.</p><Link href="/courses" className="btn" style={{marginTop:12}}>Find your course <ArrowRight size={16}/></Link></div></section>
-  <section style={{background:"#f5f8fd",padding:"65px 0"}}><div className="container" style={{textAlign:"center"}}><p style={{color:"#3974c8",fontWeight:800,fontSize:12,letterSpacing:2}}>A NOTE FROM US</p><h2 style={{fontSize:32,maxWidth:680,margin:"12px auto"}}>“Your first video does not need to be perfect. It needs to teach you something.”</h2><p className="muted">The SHUBHIII learning philosophy</p></div></section>
- </main>
+import { testimonials } from "@/data/testimonials";
+import { siteConfig } from "@/config/site";
+
+export default function Home() {
+  const instructor = siteConfig.instructor;
+
+  return (
+    <main>
+      <section className="hero-section">
+        <div className="container hero-grid">
+          <div>
+            <div className="hero-pill"><Star size={14} aria-hidden="true" /> CREATOR LEARNING STUDIO</div>
+            <h1 className="hero-title">Build your channel.<br /><span>Own your growth.</span></h1>
+            <p className="hero-copy">Learn YouTube strategy, original content workflows and creator skills with clear, practical lessons made for beginners.</p>
+            <div className="hero-actions">
+              <Link className="btn hero-primary" href="/courses">Explore courses <ArrowRight size={17} aria-hidden="true" /></Link>
+              <Link className="btn hero-secondary" href="/#why">Why SHUBHIII?</Link>
+            </div>
+            <p className="trust-line">{siteConfig.trustLine}</p>
+            <p className="hero-note">Practical learning. Original ideas. Sustainable creator habits.</p>
+          </div>
+          <div className="hero-art" role="img" aria-label="Illustration of a creator learning playbook">
+            <div className="playbook-card">
+              <div className="playbook-top"><span>THE CREATOR PLAYBOOK</span><Video aria-hidden="true" /></div>
+              <div className="playbook-symbol" aria-hidden="true">▶</div>
+              <h2>From first idea<br />to your next upload.</h2>
+              <div className="playbook-progress"><span /></div>
+              <div className="playbook-meta"><span>LEARN AT YOUR PACE</span><span>01 / 06</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="why" className="container section-space">
+        <div className="section-intro">
+          <p className="eyebrow">WHY LEARN WITH US</p>
+          <h2>A clearer path to creating</h2>
+          <p className="muted">No shortcuts or overnight-success promises. Just the skills, structure and confidence to make better work.</p>
+        </div>
+        <div className="feature-grid">
+          {[
+            { icon: <Lightbulb aria-hidden="true" />, title: "Beginner friendly", description: "Clear explanations and practical steps, even if you are starting from zero." },
+            { icon: <Clapperboard aria-hidden="true" />, title: "Real creator workflows", description: "Learn research, scripting, production and publishing as a connected process." },
+            { icon: <ChartNoAxesCombined aria-hidden="true" />, title: "Learn from data", description: "Understand analytics and use evidence to improve your next video." },
+            { icon: <ShieldCheck aria-hidden="true" />, title: "Create responsibly", description: "Focus on original work, licensed assets and sustainable channel practices." }
+          ].map((item) => (
+            <article className="card feature-card" key={item.title}>
+              <div className="feature-icon">{item.icon}</div>
+              <h3>{item.title}</h3>
+              <p className="muted">{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="soft-section section-space">
+        <div className="container">
+          <div className="section-heading-row">
+            <div><p className="eyebrow">START LEARNING</p><h2>Featured courses</h2></div>
+            <Link className="text-link" href="/courses">View all courses →</Link>
+          </div>
+          <div className="course-grid">
+            {courses.slice(0, 3).map((course) => (
+              <article className="card course-card" key={course.slug}>
+                <div className="course-art" role="img" aria-label={`${course.title} course artwork placeholder`}>{course.icon}</div>
+                <p className="course-eyebrow">{course.badge.toUpperCase()} · {course.level.toUpperCase()}</p>
+                <h3>{course.title}</h3>
+                <p className="muted course-description">{course.description}</p>
+                <div className="course-card-bottom">
+                  <strong>₹{course.price.toLocaleString("en-IN")}</strong>
+                  <Link className="btn btn-light" href={`/course/${course.slug}`} aria-label={`View details for ${course.title}`}>View details</Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="container instructor-section">
+        <div className="instructor-photo-wrap">
+          {instructor.photoUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img className="instructor-photo" src={instructor.photoUrl} alt={instructor.photoAlt} />
+          ) : (
+            <div className="instructor-photo-placeholder" role="img" aria-label="Instructor photo placeholder">
+              <span aria-hidden="true">S</span><small>ADD INSTRUCTOR PHOTO</small>
+            </div>
+          )}
+          <p className="instructor-name">{instructor.name}</p>
+          <p className="muted instructor-role">Instructor · SHUBHIII</p>
+        </div>
+        <div className="instructor-copy">
+          <p className="eyebrow">ABOUT THE STUDIO</p>
+          <h2>Learn by understanding the process.</h2>
+          <p className="muted">{instructor.bio}</p>
+          <h3 className="credential-heading">Instructor background</h3>
+          <ul className="credential-list">
+            {instructor.credentials.map((credential) => <li key={credential}>{credential}</li>)}
+          </ul>
+          <p className="edit-note">Editable instructor details: update <code>config/site.ts</code>.</p>
+          <Link href="/courses" className="btn instructor-cta">Find your course <ArrowRight size={16} aria-hidden="true" /></Link>
+        </div>
+      </section>
+
+      <section className="soft-section section-space">
+        <div className="container">
+          <div className="section-intro">
+            <p className="eyebrow">STUDENT EXPERIENCES</p>
+            <h2>What students say</h2>
+            <p className="muted">A place for honest feedback from learners in the SHUBHIII community.</p>
+          </div>
+          <p className="sample-review-notice">SAMPLE TESTIMONIALS — replace these examples with genuine student reviews and get permission before publishing.</p>
+          <div className="testimonial-grid">
+            {testimonials.map((testimonial) => (
+              <article className="card testimonial-card" key={testimonial.name}>
+                {testimonial.rating ? <p className="testimonial-rating" aria-label={`${testimonial.rating} out of 5 stars`}>{"★".repeat(Math.max(0, Math.min(5, testimonial.rating)))}</p> : null}
+                <blockquote>“{testimonial.quote}”</blockquote>
+                <div><strong>{testimonial.name}</strong><p className="muted">{testimonial.role}</p></div>
+              </article>
+            ))}
+          </div>
+          <p className="edit-note">Editable sample reviews: update <code>data/testimonials.ts</code>.</p>
+        </div>
+      </section>
+
+      <section className="container philosophy-section">
+        <p className="eyebrow">A NOTE FROM US</p>
+        <h2>“Your first video does not need to be perfect. It needs to teach you something.”</h2>
+        <p className="muted">The SHUBHIII learning philosophy</p>
+      </section>
+    </main>
+  );
 }
