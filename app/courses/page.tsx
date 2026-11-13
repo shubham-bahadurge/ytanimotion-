@@ -22,7 +22,7 @@ export default function CoursesPage() {
         <div className="card" style={{ padding: 28, textAlign: "center" }}>
           <h2>No courses are available right now.</h2>
           <p className="muted">Please check back soon or contact us if you need help finding a course.</p>
-          <Link className="btn" href="/contact">Contact SHUBHIII</Link>
+          <Link className="btn" href="/contact">Contact {siteConfig.businessName}</Link>
         </div>
       ) : (
       <div className="course-grid">
