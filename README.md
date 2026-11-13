@@ -11,7 +11,7 @@ Responsive online course platform focused on YouTube strategy and original-conte
 
 ## Run locally
 1. Install Node.js 20.9 or newer.
-2. Copy `.env.example` to `.env` and fill in PostgreSQL, auth and Stripe test settings.
+2. Copy `.env.example` to `.env` and fill in `DATABASE_URL`, `AUTH_SECRET`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` and `NEXT_PUBLIC_SITE_URL`.
 3. Run `npm install`.
 4. Run `npx prisma generate`.
 5. Run `npx prisma db push` to create tables.
@@ -23,14 +23,16 @@ Create test API keys at https://dashboard.stripe.com/test/apikeys. Put the secre
 Stripe's standard test card: `4242 4242 4242 4242`; any future expiry, any CVC and a test postal code. Never enter real card details in test mode.
 
 ## Vercel deployment
-Import this repository into Vercel. Add all variables from `.env.example` in Project Settings → Environment Variables. Use a hosted PostgreSQL provider such as Neon; run `npx prisma db push` against that database, then redeploy. Set `NEXT_PUBLIC_SITE_URL` to your deployed HTTPS URL and add the Stripe webhook endpoint in Stripe Dashboard.
+Import this repository into Vercel. Add the required variables from `.env.example` in Project Settings → Environment Variables. Use a hosted PostgreSQL provider such as Neon; run `npx prisma db push` against that database, then redeploy. Set `NEXT_PUBLIC_SITE_URL` to your deployed HTTPS URL and add the Stripe webhook endpoint in Stripe Dashboard.
 
 ## Edit courses
 Edit `data/courses.ts`. Prices are in INR. Replace sample YouTube video IDs with videos you own or have permission to embed.
 
 ## Before launch
-- Replace instructor placeholder text with an accurate biography and real support details.
-- Add privacy, terms, refund and course-access policies.
+- Replace the sample course video IDs in `data/courses.ts` with authorized course lessons.
+- Set `showTestimonials` to `true` only after replacing sample data with genuine, permission-approved reviews.
+- Complete the TODO business and instructor details in `config/site.ts`.
+- Replace the legal TODOs in `/privacy`, `/terms` and `/refund` with reviewed, accurate policies.
 - Configure transactional email for verification, password reset and support replies (not included yet).
 - Add rate limiting, abuse monitoring and a production security review.
 - Confirm Stripe supports your business location and selected currency.
