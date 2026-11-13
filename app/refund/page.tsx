@@ -17,7 +17,7 @@ export default function RefundPolicyPage() {
       <h2>Review and processing</h2>
       <p>TODO: Confirm the review process, response time and refund processing method.</p>
       <h2>Contact</h2>
-      <p>Add the official support contact details and ensure this policy is consistent with your checkout page and applicable consumer-protection requirements.</p>
+      <p>TODO: Add the official support contact details and ensure this policy is consistent with your checkout page and applicable consumer-protection requirements.</p>
     </main>
   );
 }
