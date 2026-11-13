@@ -97,7 +97,7 @@ export default function Home() {
         <div className="instructor-photo-wrap">
           {instructor.photoPath ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img className="instructor-photo" src={instructor.photoUrl} alt={instructor.photoAlt} />
+            <img className="instructor-photo" src={instructor.photoPath} alt={instructor.photoAlt} />
           ) : (
             <div className="instructor-photo-placeholder" role="img" aria-label="Instructor photo placeholder">
               <span aria-hidden="true">S</span><small>TODO: ADD INSTRUCTOR PHOTO</small>
