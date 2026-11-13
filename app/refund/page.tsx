@@ -1,3 +1,7 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = { title: "Refund Policy", description: "Review SHUBHIII refund information and request guidance.", alternates: { canonical: "/refund" }, robots: { index: false, follow: true } };
+
 export default function RefundPolicyPage() {
   return (
     <main className="container policy-page">
