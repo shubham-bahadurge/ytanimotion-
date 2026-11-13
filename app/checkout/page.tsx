@@ -1,7 +1,80 @@
 "use client";
+
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
 import { courses } from "@/data/courses";
-function CheckoutContent(){const params=useSearchParams();const slug=params.get("course");const course=courses.find(c=>c.slug===slug);const [error,setError]=useState("");const [busy,setBusy]=useState(false);async function buy(){setBusy(true);setError("");const r=await fetch("/api/checkout",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({courseSlug:slug})});const d=await r.json();if(!r.ok){setError(d.error||"Unable to start checkout.");setBusy(false);return;}window.location.href=d.url;}if(!course)return <main className="container" style={{padding:80}}>Course not found. <Link href="/courses">Browse courses</Link></main>;return <main className="container" style={{padding:"65px 0",maxWidth:680}}><p style={{color:"#3974c8",fontWeight:800,fontSize:12,letterSpacing:2}}>SECURE CHECKOUT</p><h1 style={{fontSize:38}}>Review your order</h1><div className="card" style={{padding:26,marginTop:25}}><div style={{display:"flex",justifyContent:"space-between",gap:20}}><div><h2 style={{fontSize:20,margin:"0 0 8px"}}>{course.title}</h2><p className="muted" style={{fontSize:13}}>Lifetime access to the course lessons</p></div><strong>₹{course.price.toLocaleString("en-IN")}</strong></div><hr style={{border:0,borderTop:"1px solid #e8edf4",margin:"24px 0"}}/><div style={{display:"flex",justifyContent:"space-between",fontSize:18,fontWeight:800}}><span>Total</span><span>₹{course.price.toLocaleString("en-IN")}</span></div><button className="btn" onClick={buy} disabled={busy} style={{width:"100%",marginTop:24}}>{busy?"Redirecting to Stripe…":"Continue to secure payment"}</button>{error&&<p style={{color:"#b42318",fontSize:13,marginTop:12}}>{error}</p>}<p className="muted" style={{fontSize:12,lineHeight:1.6,marginTop:16}}>You will complete payment on Stripe's secure checkout page. Test mode only until your live Stripe keys are configured.</p></div></main>}
-export default function Checkout(){return <Suspense fallback={<main className="container" style={{padding:80}}>Loading checkout…</main>}><CheckoutContent/></Suspense>}
+import { siteConfig } from "@/config/site";
+
+function CheckoutContent() {
+  const params = useSearchParams();
+  const slug = params.get("course");
+  const course = courses.find((item) => item.slug === slug);
+  const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
+
+  async function buy() {
+    setBusy(true);
+    setError("");
+    const response = await fetch("/api/checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ courseSlug: slug })
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      setError(data.error || "Unable to start checkout.");
+      setBusy(false);
+      return;
+    }
+    window.location.href = data.url;
+  }
+
+  if (!course) {
+    return (
+      <main className="container checkout-page">
+        <h1>Course not found</h1>
+        <p className="muted">Choose a course from the course library to continue.</p>
+        <Link className="btn" href="/courses">Browse courses</Link>
+      </main>
+    );
+  }
+
+  return (
+    <main className="container checkout-page">
+      <p className="eyebrow">SECURE CHECKOUT</p>
+      <h1 className="checkout-title">Review your order</h1>
+      <div className="card checkout-card">
+        <div className="checkout-order-row">
+          <div>
+            <h2>{course.title}</h2>
+            <p className="muted">Lifetime access to the course lessons</p>
+          </div>
+          <strong>₹{course.price.toLocaleString("en-IN")}</strong>
+        </div>
+        <hr />
+        <div className="checkout-total">
+          <span>Total</span>
+          <span>₹{course.price.toLocaleString("en-IN")}</span>
+        </div>
+        <button className="btn checkout-submit" onClick={buy} disabled={busy}>
+          {busy ? "Redirecting to Stripe…" : "Continue to secure payment"}
+        </button>
+        {error ? <p className="checkout-error" role="alert">{error}</p> : null}
+        <p className="muted checkout-note">
+          You will complete payment on Stripe's hosted checkout page. Test mode only until live Stripe keys are configured.
+        </p>
+        <p className="muted checkout-note">{siteConfig.trustLine}</p>
+        <p className="checkout-policy-link"><Link href="/refund">Read the refund policy</Link></p>
+      </div>
+    </main>
+  );
+}
+
+export default function Checkout() {
+  return (
+    <Suspense fallback={<main className="container checkout-page">Loading checkout…</main>}>
+      <CheckoutContent />
+    </Suspense>
+  );
+}
