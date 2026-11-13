@@ -95,14 +95,10 @@ export default function Home() {
 
       <section className="container instructor-section">
         <div className="instructor-photo-wrap">
-          {instructor.photoPath ? (
+          {Boolean(instructor.photoPath) ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img className="instructor-photo" src={instructor.photoPath} alt={instructor.photoAlt} />
-          ) : (
-            <div className="instructor-photo-placeholder" role="img" aria-label="Instructor photo placeholder">
-              <span aria-hidden="true">S</span><small>TODO: ADD INSTRUCTOR PHOTO</small>
-            </div>
-          )}
+          ) : null}
           <p className="instructor-name">{instructor.name}</p>
           <p className="muted instructor-role">Instructor · {siteConfig.businessName}</p>
         </div>
@@ -114,7 +110,6 @@ export default function Home() {
           <ul className="credential-list">
             {instructor.credentials.map((credential) => <li key={credential}>{credential}</li>)}
           </ul>
-          <p className="edit-note">Editable instructor details: update <code>config/site.ts</code>.</p>
           <Link href="/courses" className="btn instructor-cta">Find your course <ArrowRight size={16} aria-hidden="true" /></Link>
         </div>
       </section>
@@ -137,7 +132,6 @@ export default function Home() {
               </article>
             ))}
           </div>
-          <p className="edit-note">Editable sample reviews: update <code>data/testimonials.ts</code>.</p>
         </div>
       </section>
 
