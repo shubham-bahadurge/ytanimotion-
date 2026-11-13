@@ -37,8 +37,8 @@ async function Footer() {
             <Link href="/privacy">Privacy Policy</Link>
             <Link href="/terms">Terms</Link>
             <Link href="/refund">Refund Policy</Link>
-            {social.youtube ? <a href={social.youtube} target="_blank" rel="noopener noreferrer" aria-label="Visit SHUBHIII on YouTube">YouTube ↗</a> : null}
-            {social.instagram ? <a href={social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Visit SHUBHIII on Instagram">Instagram ↗</a> : null}
+            {social.youtube ? <a href={social.youtube} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${siteConfig.businessName} on YouTube`}>YouTube ↗</a> : null}
+            {social.instagram ? <a href={social.instagram} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${siteConfig.businessName} on Instagram`>Instagram ↗</a> : null}
           </nav>
         </div>
         <div className="footer-bottom">© {new Date().getFullYear()} {siteConfig.businessName}. All rights reserved. Educational content only; results depend on your effort and platform policies.</div>
