@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Secure Checkout",
-  description: "Review your SHUBHIII course order before completing payment.",
+  description: `Review your ${siteConfig.businessName} course order before completing payment.`,
   robots: { index: false, follow: false }
 };
 
