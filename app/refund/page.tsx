@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = { title: "Refund Policy", description: "Review SHUBHIII refund information and request guidance.", alternates: { canonical: "/refund" }, robots: { index: false, follow: true } };
 
+import { siteConfig } from "@/config/site";
+
 export default function RefundPolicyPage() {
   return (
     <main className="container policy-page">
@@ -15,7 +17,7 @@ export default function RefundPolicyPage() {
       <h2>Review and processing</h2>
       <p>Describe how requests are reviewed, the expected response time and how approved refunds are processed through the original payment method.</p>
       <h2>Contact</h2>
-      <p>Add your official support contact details and ensure this policy is consistent with your checkout page and applicable consumer-protection requirements.</p>
+      <p>Add the official support contact details and ensure this policy is consistent with your checkout page and applicable consumer-protection requirements.</p>
     </main>
   );
 }
