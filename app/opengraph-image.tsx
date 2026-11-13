@@ -20,9 +20,9 @@ export default function OpenGraphImage() {
           color: "white"
         }}
       >
-        <div style={{ fontSize: 30, letterSpacing: 8, color: "#b9d3fb" }}>CREATOR LEARNING STUDIO</div>
-        <div style={{ fontSize: 92, fontWeight: 800, marginTop: 35 }}>{siteConfig.businessName}.</div>
-        <div style={{ fontSize: 42, marginTop: 22, maxWidth: 900, lineHeight: 1.2 }}>
+        <div style={{ display: "flex", fontSize: 30, letterSpacing: 8, color: "#b9d3fb" }}>CREATOR LEARNING STUDIO</div>
+        <div style={{ display: "flex", fontSize: 92, fontWeight: 800, marginTop: 35 }}>{`${siteConfig.businessName}.`}</div>
+        <div style={{ display: "flex", fontSize: 42, marginTop: 22, maxWidth: 900, lineHeight: 1.2 }}>
           Learn YouTube strategy. Build original content. Grow your skills.
         </div>
       </div>
