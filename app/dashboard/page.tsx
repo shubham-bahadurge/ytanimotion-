@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/config/site";
 
-export const metadata: Metadata = { title: "My Learning Dashboard", description: "Access your SHUBHIII courses and learning progress.", robots: { index: false, follow: false } };
+import type { Metadata } from "next";
+
+export const metadata: Metadata = { title: "My Learning Dashboard", description: `Access your ${siteConfig.businessName} courses and learning progress.`, robots: { index: false, follow: false } };
 
 import Link from "next/link";
 import { redirect } from "next/navigation";
