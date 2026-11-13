@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Refund Policy", description: "Review SHUBHIII refund information and request guidance.", alternates: { canonical: "/refund" }, robots: { index: false, follow: true } };
+export const metadata: Metadata = { title: "Refund Policy", description: `Review ${siteConfig.businessName} refund information and request guidance.`, alternates: { canonical: "/refund" }, robots: { index: false, follow: true } };
 
 import { siteConfig } from "@/config/site";
 
