@@ -19,7 +19,7 @@ export default function TermsPage() {
       <h2>Educational information</h2>
       <p>Courses provide educational guidance. Results vary and {siteConfig.businessName} does not guarantee views, subscribers, revenue or channel growth.</p>
       <h2>Contact</h2>
-      <p>Add the official business name and contact details for questions about these terms.</p>
+      <p>TODO: Add the official business name and contact details for questions about these terms.</p>
     </main>
   );
 }
