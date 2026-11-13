@@ -1,5 +1,13 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { courses } from "@/data/courses";
+
+export const metadata: Metadata = {
+  title: "YouTube Strategy and Creator Courses",
+  description: "Browse SHUBHIII courses for beginner creators covering YouTube strategy, content planning, editing and original video workflows.",
+  alternates: { canonical: "/courses" },
+  openGraph: { title: "Courses | SHUBHIII", description: "Browse practical courses for beginner YouTube creators.", url: "/courses", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "SHUBHIII courses" }] }
+};
 
 export default function CoursesPage() {
   return (
@@ -9,6 +17,13 @@ export default function CoursesPage() {
       <p className="muted" style={{ maxWidth: 620, lineHeight: 1.7, marginBottom: 34 }}>
         Practical courses to help you plan, create and improve original YouTube content.
       </p>
+      {courses.length === 0 ? (
+        <div className="card" style={{ padding: 28, textAlign: "center" }}>
+          <h2>No courses are available right now.</h2>
+          <p className="muted">Please check back soon or contact us if you need help finding a course.</p>
+          <Link className="btn" href="/contact">Contact SHUBHIII</Link>
+        </div>
+      ) : (
       <div className="course-grid">
         {courses.map((course) => (
           <article className="card course-card" key={course.slug}>
@@ -31,6 +46,7 @@ export default function CoursesPage() {
           </article>
         ))}
       </div>
+      )}
     </main>
   );
 }
