@@ -7,16 +7,16 @@ import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
-  title: { default: "SHUBHIII | Creator Learning Studio", template: "%s | SHUBHIII" },
+  title: { default: `${siteConfig.businessName} | Creator Learning Studio`, template: `%s | ${siteConfig.businessName}` },
   description: "Beginner-friendly courses on YouTube strategy, original content planning and creator workflows.",
   openGraph: {
     type: "website",
     siteName: siteConfig.businessName,
-    title: "SHUBHIII | Creator Learning Studio",
+    title: `${siteConfig.businessName} | Creator Learning Studio`,
     description: "Beginner-friendly courses on YouTube strategy, original content planning and creator workflows.",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "SHUBHIII Creator Learning Studio" }]
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${siteConfig.businessName} Creator Learning Studio` }]
   },
-  twitter: { card: "summary_large_image", title: "SHUBHIII | Creator Learning Studio", description: "Learn YouTube strategy and original content workflows." }
+  twitter: { card: "summary_large_image", title: `${siteConfig.businessName} | Creator Learning Studio`, description: "Learn YouTube strategy and original content workflows." }
 };
 
 async function Footer() {
