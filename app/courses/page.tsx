@@ -4,9 +4,9 @@ import { courses } from "@/data/courses";
 
 export const metadata: Metadata = {
   title: "YouTube Strategy and Creator Courses",
-  description: "Browse SHUBHIII courses for beginner creators covering YouTube strategy, content planning, editing and original video workflows.",
+  description: "Browse {siteConfig.businessName} courses for beginner creators covering YouTube strategy, content planning, editing and original video workflows.",
   alternates: { canonical: "/courses" },
-  openGraph: { title: "Courses | SHUBHIII", description: "Browse practical courses for beginner YouTube creators.", url: "/courses", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "SHUBHIII courses" }] }
+  openGraph: { title: "Courses | {siteConfig.businessName}", description: "Browse practical courses for beginner YouTube creators.", url: "/courses", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "{siteConfig.businessName} courses" }] }
 };
 
 export default function CoursesPage() {
