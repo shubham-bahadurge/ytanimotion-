@@ -1,8 +1,22 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ArrowRight, ChartNoAxesCombined, Clapperboard, Lightbulb, ShieldCheck, Star, Video } from "lucide-react";
 import { courses } from "@/data/courses";
 import { testimonials } from "@/data/testimonials";
 import { siteConfig } from "@/config/site";
+
+export const metadata: Metadata = {
+  title: "YouTube Learning Courses for Beginners",
+  description: "Explore beginner-friendly courses on YouTube strategy, original content planning, creator workflows and video production at SHUBHIII.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    title: "SHUBHIII | Creator Learning Studio",
+    description: "Beginner-friendly courses for YouTube strategy, original content and creator workflows.",
+    url: "/",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "SHUBHIII Creator Learning Studio" }]
+  }
+};
 
 export default function Home() {
   const instructor = siteConfig.instructor;
@@ -81,12 +95,12 @@ export default function Home() {
 
       <section className="container instructor-section">
         <div className="instructor-photo-wrap">
-          {instructor.photoUrl ? (
+          {instructor.photoPath ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img className="instructor-photo" src={instructor.photoUrl} alt={instructor.photoAlt} />
           ) : (
             <div className="instructor-photo-placeholder" role="img" aria-label="Instructor photo placeholder">
-              <span aria-hidden="true">S</span><small>ADD INSTRUCTOR PHOTO</small>
+              <span aria-hidden="true">S</span><small>TODO: ADD INSTRUCTOR PHOTO</small>
             </div>
           )}
           <p className="instructor-name">{instructor.name}</p>
@@ -105,6 +119,7 @@ export default function Home() {
         </div>
       </section>
 
+      {siteConfig.showTestimonials ? (
       <section className="soft-section section-space">
         <div className="container">
           <div className="section-intro">
@@ -125,6 +140,8 @@ export default function Home() {
           <p className="edit-note">Editable sample reviews: update <code>data/testimonials.ts</code>.</p>
         </div>
       </section>
+
+      ) : null}
 
       <section className="container philosophy-section">
         <p className="eyebrow">A NOTE FROM US</p>
