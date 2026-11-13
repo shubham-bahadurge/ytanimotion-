@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = { title: "Privacy Policy", description: "Read how SHUBHIII handles account, course and contact information.", alternates: { canonical: "/privacy" }, robots: { index: false, follow: true } };
 
+import { siteConfig } from "@/config/site";
+
 export default function PrivacyPolicyPage() {
   return (
     <main className="container policy-page">
@@ -9,7 +11,7 @@ export default function PrivacyPolicyPage() {
       <h1>Privacy Policy</h1>
       <p className="policy-notice"><strong>PLACEHOLDER — replace before launch.</strong> This page is a drafting placeholder, not a complete legal privacy notice.</p>
       <h2>Information we may collect</h2>
-      <p>SHUBHIII may collect account details, course access information and messages submitted through the contact form. Replace this section with an accurate description of the information your live website collects.</p>
+      <p>{siteConfig.businessName} may collect account details, course access information and messages submitted through the contact form. Replace this section with an accurate description of the information your live website collects.</p>
       <h2>How information is used</h2>
       <p>Explain how information is used to provide courses, manage accounts, respond to support requests and meet applicable legal obligations.</p>
       <h2>Payments and third parties</h2>
