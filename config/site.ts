@@ -1,25 +1,25 @@
-// Central place for SHUBHIII brand, instructor, trust and social details.
-// Replace every clearly marked placeholder before publishing.
+// Single source of truth for public business and instructor details.
+// Replace TODO values with verified information before production launch.
 export const siteConfig = {
+  businessName: "SHUBHIII",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://shubhiii-course-platform.vercel.app",
+  supportEmail: "", // TODO: Add the official support email address.
+  businessAddress: "", // TODO: Add the registered/business address, if required.
   trustLine: "Secure checkout · Course access after successful payment · Clear refund terms",
+  showTestimonials: false, // Enable only after genuine, permission-approved reviews are ready.
   instructor: {
-    // TODO: Replace with the instructor's real name before launch.
-    name: "Add instructor name before launch",
-    // TODO: Replace with a short, accurate biography.
-    bio: "Add a short instructor biography here. Share your real teaching experience, creator background and the kind of practical guidance students can expect.",
-    // TODO: Add a real, permission-cleared photo URL. Leave empty to show the placeholder.
-    photoUrl: "",
-    photoAlt: "Instructor portrait placeholder for SHUBHIII",
-    // TODO: Replace these with verifiable qualifications or experience.
+    name: "TODO: Add the instructor's real name",
+    bio: "TODO: Add an accurate instructor biography based on verified experience.",
+    photoPath: "", // TODO: Add a permission-cleared local image path or public image URL.
+    photoAlt: "TODO: Describe the instructor photo when one is added.",
     credentials: [
-      "Add a relevant YouTube or creator-education credential",
-      "Add a real professional or teaching experience",
-      "Add a relevant project, qualification or achievement"
+      "TODO: Add a verifiable creator-education credential.",
+      "TODO: Add real professional or teaching experience.",
+      "TODO: Add a relevant verified project or qualification."
     ]
   },
   social: {
-    // TODO: Replace with the official SHUBHIII profile URLs.
-    youtube: "",
-    instagram: ""
+    youtube: "", // TODO: Add the official SHUBHIII YouTube URL.
+    instagram: "" // TODO: Add the official SHUBHIII Instagram URL.
   }
 } as const;
