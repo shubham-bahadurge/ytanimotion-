@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Privacy Policy", description: "Read how SHUBHIII handles account, course and contact information.", alternates: { canonical: "/privacy" }, robots: { index: false, follow: true } };
+export const metadata: Metadata = { title: "Privacy Policy", description: `Read how ${siteConfig.businessName} handles account, course and contact information.`, alternates: { canonical: "/privacy" }, robots: { index: false, follow: true } };
 
 import { siteConfig } from "@/config/site";
 
