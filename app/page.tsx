@@ -7,7 +7,7 @@ import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "YouTube Learning Courses for Beginners",
-  description: "Explore beginner-friendly courses on YouTube strategy, original content planning, creator workflows and video production at SHUBHIII.",
+  description: `Explore beginner-friendly courses on YouTube strategy, original content planning, creator workflows and video production at ${siteConfig.businessName}.`,
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -146,7 +146,7 @@ export default function Home() {
       <section className="container philosophy-section">
         <p className="eyebrow">A NOTE FROM US</p>
         <h2>“Your first video does not need to be perfect. It needs to teach you something.”</h2>
-        <p className="muted">The SHUBHIII learning philosophy</p>
+        <p className="muted">{siteConfig.businessName} learning philosophy</p>
       </section>
     </main>
   );
