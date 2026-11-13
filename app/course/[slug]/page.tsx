@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     alternates: { canonical: `/course/${course.slug}` },
     openGraph: {
       type: "website",
-      title: `${course.title} | SHUBHIII`,
+      title: `${course.title} | ${siteConfig.businessName}`,
       description: course.description,
       url: `/course/${course.slug}`,
       images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${course.title} course` }]
