@@ -11,10 +11,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    title: "SHUBHIII | Creator Learning Studio",
+    title: `${siteConfig.businessName} | Creator Learning Studio`,
     description: "Beginner-friendly courses for YouTube strategy, original content and creator workflows.",
     url: "/",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "SHUBHIII Creator Learning Studio" }]
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${siteConfig.businessName} Creator Learning Studio` }]
   }
 };
 
@@ -31,7 +31,7 @@ export default function Home() {
             <p className="hero-copy">Learn YouTube strategy, original content workflows and creator skills with clear, practical lessons made for beginners.</p>
             <div className="hero-actions">
               <Link className="btn hero-primary" href="/courses">Explore courses <ArrowRight size={17} aria-hidden="true" /></Link>
-              <Link className="btn hero-secondary" href="/#why">Why SHUBHIII?</Link>
+              <Link className="btn hero-secondary" href="/#why">Why {siteConfig.businessName}?</Link>
             </div>
             <p className="trust-line">{siteConfig.trustLine}</p>
             <p className="hero-note">Practical learning. Original ideas. Sustainable creator habits.</p>
@@ -104,7 +104,7 @@ export default function Home() {
             </div>
           )}
           <p className="instructor-name">{instructor.name}</p>
-          <p className="muted instructor-role">Instructor · SHUBHIII</p>
+          <p className="muted instructor-role">Instructor · {siteConfig.businessName}</p>
         </div>
         <div className="instructor-copy">
           <p className="eyebrow">ABOUT THE STUDIO</p>
@@ -125,7 +125,7 @@ export default function Home() {
           <div className="section-intro">
             <p className="eyebrow">STUDENT EXPERIENCES</p>
             <h2>What students say</h2>
-            <p className="muted">A place for honest feedback from learners in the SHUBHIII community.</p>
+            <p className="muted">A place for honest feedback from learners in the {siteConfig.businessName} community.</p>
           </div>
           <p className="sample-review-notice">SAMPLE TESTIMONIALS — replace these examples with genuine student reviews and get permission before publishing.</p>
           <div className="testimonial-grid">
