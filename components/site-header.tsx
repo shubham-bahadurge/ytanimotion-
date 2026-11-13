@@ -13,7 +13,7 @@ export default function SiteHeader({ isLoggedIn }: { isLoggedIn: boolean }) {
   return (
     <header className="site-header">
       <div className="container header-inner">
-        <Link href="/" className="brand" onClick={closeMenu} aria-label="SHUBHIII home">
+        <Link href="/" className="brand" onClick={closeMenu} aria-label={`${siteConfig.businessName} home`}>
           {siteConfig.businessName}<span>.</span>
         </Link>
 
