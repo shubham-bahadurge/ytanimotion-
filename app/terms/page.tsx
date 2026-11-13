@@ -1,3 +1,7 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = { title: "Terms and Conditions", description: "Review the terms for using SHUBHIII and accessing its learning content.", alternates: { canonical: "/terms" }, robots: { index: false, follow: true } };
+
 export default function TermsPage() {
   return (
     <main className="container policy-page">
