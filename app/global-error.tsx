@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site";
 
 export default function GlobalError({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
   useEffect(() => {
-    console.error("SHUBHIII application error:", error);
+    console.error(`${siteConfig.businessName} application error:`, error);
   }, [error]);
 
   return (
