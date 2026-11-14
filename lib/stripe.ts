@@ -1,2 +1,13 @@
 import Stripe from "stripe";
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_placeholder");
+
+let stripeClient: Stripe | undefined;
+
+export function getStripe() {
+  const secretKey = process.env.STRIPE_SECRET_KEY;
+  if (!secretKey) {
+    throw new Error("STRIPE_SECRET_KEY must be configured in the environment.");
+  }
+
+  if (!stripeClient) stripeClient = new Stripe(secretKey);
+  return stripeClient;
+}

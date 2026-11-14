@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { LogOut, Menu, X } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 export default function SiteHeader({ isLoggedIn }: { isLoggedIn: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,8 +13,8 @@ export default function SiteHeader({ isLoggedIn }: { isLoggedIn: boolean }) {
   return (
     <header className="site-header">
       <div className="container header-inner">
-        <Link href="/" className="brand" onClick={closeMenu} aria-label="SHUBHIII home">
-          SHUBHIII<span>.</span>
+        <Link href="/" className="brand" onClick={closeMenu} aria-label={`${siteConfig.businessName} home`}>
+          {siteConfig.businessName}<span>.</span>
         </Link>
 
         <button

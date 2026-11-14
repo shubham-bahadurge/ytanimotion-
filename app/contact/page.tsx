@@ -1,1 +1,59 @@
-"use client";import {useState} from "react";export default function Contact(){const [name,setName]=useState("");const [email,setEmail]=useState("");const [message,setMessage]=useState("");const [status,setStatus]=useState("");const [busy,setBusy]=useState(false);async function submit(e:React.FormEvent){e.preventDefault();setBusy(true);setStatus("");const r=await fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name,email,message})});const d=await r.json();setBusy(false);setStatus(r.ok?"Message saved. Our team can follow up using your email.":d.error||"Could not save message.");if(r.ok){setName("");setEmail("");setMessage("");}}return <main className="container" style={{padding:"65px 0",maxWidth:650}}><p style={{color:"#3974c8",fontWeight:800,fontSize:12,letterSpacing:2}}>GET IN TOUCH</p><h1 style={{fontSize:42}}>We'd love to hear from you.</h1><p className="muted" style={{lineHeight:1.7}}>Questions about a course or need help with your account? Send us a message.</p><form className="card" onSubmit={submit} style={{padding:26,display:"grid",gap:15,marginTop:25}}><label>Name<input className="input" required value={name} onChange={e=>setName(e.target.value)} style={{marginTop:7}}/></label><label>Email<input className="input" type="email" required value={email} onChange={e=>setEmail(e.target.value)} style={{marginTop:7}}/></label><label>Message<textarea className="input" required rows={5} value={message} onChange={e=>setMessage(e.target.value)} style={{marginTop:7,resize:"vertical"}}/></label><button className="btn" disabled={busy}>{busy?"Saving…":"Send message"}</button>{status&&<p className="muted" style={{fontSize:13}}>{status}</p>}</form></main>}
+"use client";
+
+import { useState } from "react";
+import { siteConfig } from "@/config/site";
+
+export default function Contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState("");
+  const [busy, setBusy] = useState(false);
+
+  async function submit(e: React.FormEvent) {
+    e.preventDefault();
+    setBusy(true);
+    setStatus("");
+    const r = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, message })
+    });
+    const d = await r.json();
+    setBusy(false);
+    setStatus(r.ok ? "Message saved. Our team can follow up using your email." : d.error || "Could not save message.");
+    if (r.ok) {
+      setName("");
+      setEmail("");
+      setMessage("");
+    }
+  }
+
+  return (
+    <main className="container" style={{ padding: "65px 0", maxWidth: 650 }}>
+      <p style={{ color: "#3974c8", fontWeight: 800, fontSize: 12, letterSpacing: 2 }}>GET IN TOUCH</p>
+      <h1 style={{ fontSize: 42 }}>We'd love to hear from you.</h1>
+      <p className="muted" style={{ lineHeight: 1.7 }}>Questions about a course or need help with your account? Send us a message.</p>
+      {siteConfig.supportEmail ? (
+        <p className="muted">Email: <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a></p>
+      ) : null}
+      {siteConfig.businessAddress ? <p className="muted">{siteConfig.businessAddress}</p> : null}
+      <form className="card" onSubmit={submit} style={{ padding: 26, display: "grid", gap: 15, marginTop: 25 }}>
+        <label>
+          Name
+          <input className="input" required value={name} onChange={(e) => setName(e.target.value)} style={{ marginTop: 7 }} />
+        </label>
+        <label>
+          Email
+          <input className="input" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} style={{ marginTop: 7 }} />
+        </label>
+        <label>
+          Message
+          <textarea className="input" required rows={5} value={message} onChange={(e) => setMessage(e.target.value)} style={{ marginTop: 7, resize: "vertical" }} />
+        </label>
+        <button className="btn" disabled={busy}>{busy ? "Saving…" : "Send message"}</button>
+        {status && <p className="muted" style={{ fontSize: 13 }}>{status}</p>}
+      </form>
+    </main>
+  );
+}

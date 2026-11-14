@@ -1,8 +1,27 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { courses } from "@/data/courses";
 import { siteConfig } from "@/config/site";
 import { CheckCircle2, Clock3, PlayCircle } from "lucide-react";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const course = courses.find((item) => item.slug === slug);
+  if (!course) return { title: "Course not found", robots: { index: false, follow: false } };
+  return {
+    title: course.title,
+    description: course.description,
+    alternates: { canonical: `/course/${course.slug}` },
+    openGraph: {
+      type: "website",
+      title: `${course.title} | ${siteConfig.businessName}`,
+      description: course.description,
+      url: `/course/${course.slug}`,
+      images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${course.title} course` }]
+    }
+  };
+}
 
 export default async function CoursePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

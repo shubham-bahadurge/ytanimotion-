@@ -1,8 +1,22 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ArrowRight, ChartNoAxesCombined, Clapperboard, Lightbulb, ShieldCheck, Star, Video } from "lucide-react";
 import { courses } from "@/data/courses";
 import { testimonials } from "@/data/testimonials";
 import { siteConfig } from "@/config/site";
+
+export const metadata: Metadata = {
+  title: "YouTube Learning Courses for Beginners",
+  description: `Explore beginner-friendly courses on YouTube strategy, original content planning, creator workflows and video production at ${siteConfig.businessName}.`,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    title: `${siteConfig.businessName} | Creator Learning Studio`,
+    description: "Beginner-friendly courses for YouTube strategy, original content and creator workflows.",
+    url: "/",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${siteConfig.businessName} Creator Learning Studio` }]
+  }
+};
 
 export default function Home() {
   const instructor = siteConfig.instructor;
@@ -17,7 +31,7 @@ export default function Home() {
             <p className="hero-copy">Learn YouTube strategy, original content workflows and creator skills with clear, practical lessons made for beginners.</p>
             <div className="hero-actions">
               <Link className="btn hero-primary" href="/courses">Explore courses <ArrowRight size={17} aria-hidden="true" /></Link>
-              <Link className="btn hero-secondary" href="/#why">Why SHUBHIII?</Link>
+              <Link className="btn hero-secondary" href="/#why">Why {siteConfig.businessName}?</Link>
             </div>
             <p className="trust-line">{siteConfig.trustLine}</p>
             <p className="hero-note">Practical learning. Original ideas. Sustainable creator habits.</p>
@@ -81,16 +95,12 @@ export default function Home() {
 
       <section className="container instructor-section">
         <div className="instructor-photo-wrap">
-          {instructor.photoUrl ? (
+          {Boolean(instructor.photoPath) ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img className="instructor-photo" src={instructor.photoUrl} alt={instructor.photoAlt} />
-          ) : (
-            <div className="instructor-photo-placeholder" role="img" aria-label="Instructor photo placeholder">
-              <span aria-hidden="true">S</span><small>ADD INSTRUCTOR PHOTO</small>
-            </div>
-          )}
+            <img className="instructor-photo" src={instructor.photoPath} alt={instructor.photoAlt} />
+          ) : null}
           <p className="instructor-name">{instructor.name}</p>
-          <p className="muted instructor-role">Instructor · SHUBHIII</p>
+          <p className="muted instructor-role">Instructor · {siteConfig.businessName}</p>
         </div>
         <div className="instructor-copy">
           <p className="eyebrow">ABOUT THE STUDIO</p>
@@ -100,17 +110,17 @@ export default function Home() {
           <ul className="credential-list">
             {instructor.credentials.map((credential) => <li key={credential}>{credential}</li>)}
           </ul>
-          <p className="edit-note">Editable instructor details: update <code>config/site.ts</code>.</p>
           <Link href="/courses" className="btn instructor-cta">Find your course <ArrowRight size={16} aria-hidden="true" /></Link>
         </div>
       </section>
 
+      {siteConfig.showTestimonials ? (
       <section className="soft-section section-space">
         <div className="container">
           <div className="section-intro">
             <p className="eyebrow">STUDENT EXPERIENCES</p>
             <h2>What students say</h2>
-            <p className="muted">A place for honest feedback from learners in the SHUBHIII community.</p>
+            <p className="muted">A place for honest feedback from learners in the {siteConfig.businessName} community.</p>
           </div>
           <p className="sample-review-notice">SAMPLE TESTIMONIALS — replace these examples with genuine student reviews and get permission before publishing.</p>
           <div className="testimonial-grid">
@@ -122,14 +132,15 @@ export default function Home() {
               </article>
             ))}
           </div>
-          <p className="edit-note">Editable sample reviews: update <code>data/testimonials.ts</code>.</p>
         </div>
       </section>
+
+      ) : null}
 
       <section className="container philosophy-section">
         <p className="eyebrow">A NOTE FROM US</p>
         <h2>“Your first video does not need to be perfect. It needs to teach you something.”</h2>
-        <p className="muted">The SHUBHIII learning philosophy</p>
+        <p className="muted">{siteConfig.businessName} learning philosophy</p>
       </section>
     </main>
   );
